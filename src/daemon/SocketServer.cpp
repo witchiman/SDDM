@@ -141,6 +141,15 @@ namespace SDDM {
                 emit login(socket, user, password, session);
             }
             break;
+			case GreeterMessages::VeinLogin: {  //发出指静脉信号
+				Session session;
+				input >> session;
+
+				qDebug() << "OMG, SocketServer: it's running! The session is :" << session.fileName();
+
+				emit veinLogin(socket, session);
+            }
+			break;
             case GreeterMessages::PowerOff: {
                 // log message
                 qDebug() << "Message received from greeter: PowerOff";

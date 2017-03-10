@@ -64,6 +64,8 @@ namespace SDDM {
         // connect login signal
         connect(m_socketServer, SIGNAL(login(QLocalSocket*,QString,QString,Session)),
                 this, SLOT(login(QLocalSocket*,QString,QString,Session)));
+		//连接指静脉的信号和槽函数
+         connect(m_socketServer, SIGNAL(veinLogin(QLocalSocket*,Session)), this, SLOT(veinLogin(QLocalSocket*,Session)));
 
         // connect login result signals
         connect(this, SIGNAL(loginFailed(QLocalSocket*)), m_socketServer, SLOT(loginFailed(QLocalSocket*)));
@@ -209,6 +211,22 @@ namespace SDDM {
 
         // authenticate
         startAuth(user, password, session);
+    }
+	
+	/*定义指静脉槽函数*/
+    void Display::veinLogin(QLocalSocket *socket, const Session &session) {
+        m_socket = socket;
+
+        qDebug() << "OMG,Display: here verify the vein finger!" << "The session is " << session.fileName(); 
+        
+        /*此处添加所需业务逻辑,比如指静脉的验证,验证成功后,继续执行后续代码,linux的user和password自己预先填充好,直接登录成功*/
+		
+		// int result = verifyData("usb",number);
+		if(result) {  //如果指静脉验证通过
+			startAuth(QStringLiteral("space"), QStringLiteral("space"), session);  //验证函数
+		} else { //指静脉验证失败
+			startAuth(QStringLiteral(""), QStringLiteral(""), session);  //验证函数
+		}
     }
 
     QString Display::findGreeterTheme() const {

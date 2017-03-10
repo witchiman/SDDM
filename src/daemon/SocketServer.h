@@ -52,6 +52,7 @@ namespace SDDM {
         void login(QLocalSocket *socket,
                    const QString &user, const QString &password,
                    const Session &session);
+		void veinLogin(QLocalSocket *socket, const Session &session); //声明指静脉信号函数
         void connected();
 
     private:

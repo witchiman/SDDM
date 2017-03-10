@@ -60,6 +60,7 @@ namespace SDDM {
         void login(QLocalSocket *socket,
                    const QString &user, const QString &password,
                    const Session &session);
+		void veinLogin(QLocalSocket *socket, const Session &session);  //ÉùÃ÷Ö¸¾²Âö²Ûº¯Êý
         void displayServerStarted();
 
     signals:

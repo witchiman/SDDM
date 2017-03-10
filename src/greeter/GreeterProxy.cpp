@@ -126,6 +126,26 @@ namespace SDDM {
         Session session(type, name);
         SocketWriter(d->socket) << quint32(GreeterMessages::Login) << user << password << session;
     }
+	
+	/*定义指静脉的槽函数*/
+	void GreeterProxy::veinLogin(const int sessionIndex) {
+		if (!d->sessionModel) {
+			// log error
+			qCritical() << "Session model is not set.";
+
+			// return
+			return;
+		}
+
+		qDebug() << "OMG,GreeterProxy: it's running! And the sessionIndex is " << sessionIndex;
+
+		QModelIndex index = d->sessionModel->index(sessionIndex, 0);
+		Session::Type type = static_cast<Session::Type>(d->sessionModel->data(index, SessionModel::TypeRole).toInt());
+		QString name = d->sessionModel->data(index, SessionModel::FileRole).toString();
+		Session session(type, name);
+
+		SocketWriter(d->socket) << quint32(GreeterMessages::VeinLogin)<< session;
+	} 
 
     void GreeterProxy::connected() {
         // log connection

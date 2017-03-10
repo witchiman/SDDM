@@ -26,6 +26,7 @@ namespace SDDM {
     enum class GreeterMessages {
         Connect = 0,
         Login,
+		VeinLogin,
         PowerOff,
         Reboot,
         Suspend,
