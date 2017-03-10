@@ -1,0 +1,172 @@
+===========
+ sddm.conf
+===========
+
+----------------------------------
+sddm display manager configuration
+----------------------------------
+
+:Date: August 2015
+:Version: sddm @SDDM_VERSION_STRING@
+:Manual section: 5
+:Manual group: sddm
+
+SYNOPSIS
+========
+
+  @CONFIG_FILE@
+
+DESCRIPTION
+===========
+
+This file configures various parameters of the sddm display manager **sddm**\(1\).
+If this file is not available, default values are used.
+
+OPTIONS
+=======
+
+[General] section:
+
+`HaltCommand=`
+	Halt command.
+	Default value is "@HALT_COMMAND@".
+
+`RebootCommand=`
+	Reboot command.
+	Default value is "@REBOOT_COMMAND@".
+
+`Numlock=`
+	Change numlock state when **sddm-greeter** starts.
+	Valid values are `on`, `off` or `none`.
+	If property is set to `none`, numlock won't be changed.
+	Default value is "none".
+
+[Theme] section:
+
+`ThemeDir=`
+	Path of the directory containing theme files.
+	Default value is "@DATA_INSTALL_DIR@/themes".
+
+`Current=`
+	Name of the current theme.
+	Default value is "maui".
+
+`FacesDir=`
+	Path of the directory containing face files,
+	face files should be in username.face.icon format.
+	Default value is "@DATA_INSTALL_DIR@/faces".
+
+`CursorTheme=`
+	Name of the cursor theme to be set before starting
+	the display server.
+
+[XDisplay] section:
+
+`ServerPath=`
+	Path of the X server.
+	Default value is "/usr/bin/X".
+
+`ServerArguments=`
+        Arguments to the X server.
+        Default value is "-nolisten tcp".
+
+`XephyrPath=`
+	Path of the Xephyr.
+	Default value is "/usr/bin/Xephyr".
+
+`XauthPath=`
+	Path of the Xauth.
+	Default value is "/usr/bin/xauth".
+
+`SessionDir=`
+	Path of the directory containing session files.
+	Default value is "/usr/share/xsessions".
+
+`SessionCommand=`
+	Path of script to execute when starting the desktop session.
+	Default value is "@SESSION_COMMAND@".
+
+`DisplayCommand=`
+	Path of script to execute when starting the display server.
+	Default value is "@DATA_INSTALL_DIR@/scripts/Xsetup".
+
+`DisplayStopCommand=`
+	Path of script to execute when stopping the display server.
+	Default value is "@DATA_INSTALL_DIR@/scripts/Xstop".
+
+`MinimumVT=`
+	Minimum virtual terminal number that will be used
+	by the first display. Virtual terminal number will
+	increase as new displays added.
+	Default value is @MINIMUM_VT@.
+
+[WaylandDisplay] section:
+
+`SessionDir=`
+	Path of the directory containing session files.
+	Default value is "/usr/share/wayland-sessions".
+
+`SessionCommand=`
+	Path of script to execute when starting the desktop session.
+	Default value is "@WAYLAND_SESSION_COMMAND@".
+
+[Users] section:
+
+`DefaultPath=`
+	Default path to set after successfully logging in.
+	Default value is "/bin:/usr/bin:/usr/local/bin".
+
+`MinimumUid=`
+	Minimum user id of the users to be listed in the
+	user interface.
+	Default value is @UID_MIN@.
+
+`MaximumUid=`
+	Maximum user id of the users to be listed in the
+	user interface.
+	Default value is @UID_MAX@
+
+`HideUsers=`
+	Comma-separated list of Users that shouldn't show up in the user list.
+	Default value is empty.
+
+`HideShells=`
+	Comma-separated list of Shells of users that shouldn't show up in the user list.
+	Default value is empty.
+
+`RememberLastUser=`
+	If this flag is true, LastUser value will updated
+	on every successfull login, if false last user value
+	wont be updated.
+	Default value is true.
+
+`RememberLastSession=`
+	If this flag is true, LastSession value will updated
+	on every successfull login, if false last session value
+	wont be updated.
+	Default value is true.
+
+[Autologin] section:
+
+`User=`
+	Name of the user to automatically log in when the
+	system starts first time.
+	Default value is empty.
+
+`Session=`
+	Name of the session to automatically log in when the
+	system starts first time.
+	Default value is empty.
+
+`Relogin=`
+	If true and User and Session are set automatic login will
+	kick in again on session exit, otherwise it will work
+	only the first time.
+	Default value is false.
+
+SEE ALSO
+========
+
+**sddm**\(1\)
+
+The full documentation for sddm is available at https://github.com/sddm/sddm

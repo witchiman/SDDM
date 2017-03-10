@@ -1,0 +1,112 @@
+## Legend
+---------
+    + New features
+    - Bug fixes
+    * Others
+
+## 0.13.0 - 2015-11-04
+----------------------
++ Greeter inherits path environment variables from parent so that
+  themes installed in non-standard paths will work.
++ Add ENABLE_PAM option to toggle PAM support at build time.
++ Allow overriding textColor in ComboBox.
+- Don't cast QByteArray to (char *).
+- Disable greeters from loading KDE's debug hander
+  (fix CVE-2015-0856).
+- Fix multi-screen support for some setups.
+* Added Serbian translation.
+* Added Traditional Chinese translation.
+* Improved German translation.
+* Remove failsafe session entry.
+* Close the pipe fd passed to X server.
+* A few micro-optimizations.
+
+## 0.12.0 - 2015-09-05
+----------------------
+    * Add a new "platformTheme" setting for themes.
+      Themes can now specify a Qt platform theme plugin.
+    * Autodetect UID_MIN and UID_MAX from /etc/login.defs
+    * Add Arabic translation by Safa Alfulaij.
+    * Add Hungarian translation by mortein79.
+    * Russian translation improvements by Alexander Potashev.
+    * Wait for display setup script to finish.
+    * Reload configuration after display setup.
+    * Pass locale environment variables to the greeter.
+    * Support right-to-left languages.
+    * Wayland session support.
+    * Xorg server arguments are configurable.
+    * Honor locale settings in /etc/environment
+    * Allow SYSTEMD_SYSTEM_UNIT_DIR to be overridden at compile time.
+    * No longer hardcode min/max UIDs.
+    * FreeBSD build fixes.
+    * Fixed Qt 5.5 build warnings.
+    * Honor TryExec in Xsession desktop files.
+    * New sddm.conf option XephyrPath.
+    * New sddm.conf option ServerArguments.
+    * New sddm.conf option DisplayStopCommand.
+    * Enable QT_NO_CAST_FROM_ASCII.
+    * Replace non-free background with a CC-BY-SA alternative for
+      the maldives theme.
+    * Many untracked bug fixes.
+
+## 0.11.0 - 2014-11-20
+----------------------
+    + Reload the configuration every time we start a new session
+    - Fix stderr redirection in the helper. Solving a memory leak
+    - Set system locale in the greeter
+    - Bail on chdir failure
+    * Use QUuid for unique ID generation
+    * Update lithuanian translations
+
+## 0.10.0 - 2014-10-16
+----------------------
+    + Set default icon theme from greeter theme configuration.
+    + Set cursor theme according to greeter theme configuration.
+    - Never permit a login as the sddm user (CVE-2014-7271)
+    - Fix race condition in XAUTHORITY code (CVE-2014-7272)
+    - XAUTHORITY is no longer owned by root
+    - Flush any buffered data to the log file, this writes immediately
+      all the log messages.
+    - Fixed password field initial focus state
+    - Don't override pam environment variables.
+    * Remove Qt 4 support.
+    * Prioritize sessions with a .desktop prefix
+    * Add Kazakh translation.
+    * Separate display server specific code.
+
+## 0.9.0 - 2014-08-02
+---------------------
+    + Implemented automatic login
+    + Greeter now runs as its own user
+    + Added translation support for themes.
+    + Added keyboard layout support.
+    + Added option to turn on numlock at startup.
+    + ~/.xsession-errors support
+    + Improved compatibility with GNOME and Unity
+    + Initial Plymouth support
+    + Implemented logging to journald if available
+    + Added org.freedesktop.DisplayManager interface
+    + Fast user switching
+    + Test mode that can be toggled at runtime
+    + Auto Relogging
+    + User filtering based on shell
+    + User filtering based on name
+    + PAM is now optional
+    - No longer stripping comments from sddm.conf on login
+    - Fixed incorrect PAM handling causing PulseAudio to fail.
+    - Fixed a crash caused by incorrect handling of PAM
+    - Fixed compilation with Qt 5.0.0
+    - Correctly import PAM environment into the sesion
+    - Fixed missing environment variables
+    - Find empty displays and virtual desktops automatically
+    - Exit gracefully when SIGTERM is received
+    - Fix running SDDM under a Plasma 5.0 desktop.
+    * Now using Oxygen instead of Geosans Light
+    * Added man pages sddm(1), sddm-greeter(1), sddm.conf(5)
+    * Removed custom session
+    * Failsafe is no longer the default session
+
+## 0.1.0 - 2013-03-19
+---------------------
+    * Initial release
+
