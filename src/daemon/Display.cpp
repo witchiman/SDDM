@@ -39,6 +39,25 @@
 #include <pwd.h>
 #include <unistd.h>
 
+
+
+#include <errno.h>
+#include <signal.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <dlfcn.h>
+#include <termios.h>
+#include <fcntl.h>
+#include <pthread.h>
+
+#include "dohighdata.h"
+//#include "dodata.h"
+#include "XG_Protocol.h"
+
+
+
 namespace SDDM {
     Display::Display(const int terminalId, Seat *parent) : QObject(parent),
         m_terminalId(terminalId),
@@ -219,16 +238,33 @@ namespace SDDM {
 
         qDebug() << "OMG,Display: here verify the vein finger!" << "The session is " << session.fileName(); 
         
-        /*此处添加所需业务逻辑,比如指静脉的验证,验证成功后,继续执行后续代码,linux的user和password自己预先填充好,直接登录成功*/
-		
-		// int result = verifyData("usb",number);
-		if(result) {  //如果指静脉验证通过
-			startAuth(QStringLiteral("space"), QStringLiteral("space"), session);  //验证函数
-		} else { //指静脉验证失败
-			startAuth(QStringLiteral(""), QStringLiteral(""), session);  //验证函数
-		}
-    }
+        qDebug() << "Veinfinger starting.......";
+         char *dev="usb";
+         char *devNo="1";
+         int ret = 1;
+         space_vein_init();
+         space_veindev_data_get(dev,ret);
+         getiDevAdr(devNo);
 
+
+        QString user = QStringLiteral("space");
+        QString password = QStringLiteral("space");
+        int i=verify_Data("verify",3);
+        if(1==i)){
+
+        qDebug() << "Veinfinger login verify waiting :"<<i;
+        startAuth(user, password, session);
+        qDebug() << "Veinfinger login verify Success :"<<i;
+                                     }
+        else{
+        qDebug() << "Veinfinger Login Fail :"<<i;
+        QString user = QStringLiteral(" ");
+        QString password = QStringLiteral(" ");
+        startAuth(user, password, session);
+        qDebug() << "Veinfinger Login has Failed :"<<i;
+        return;
+		}
+}
     QString Display::findGreeterTheme() const {
         QString themeName = mainConfig.Theme.Current.get();
         QDir dir(mainConfig.Theme.ThemeDir.get());
