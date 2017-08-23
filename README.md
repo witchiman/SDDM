@@ -3,6 +3,10 @@
 [![Build Status](https://travis-ci.org/sddm/sddm.svg?branch=master)](https://travis-ci.org/sddm/sddm)
 [![IRC Network](https://img.shields.io/badge/irc-freenode-blue.svg "IRC Freenode")](https://webchat.freenode.net/?channels=sddm)
 
+Space OS SDDM is a custom version based on the open source software of SDDM developed by KDE team.
+
+## INTRODUCTION
+
 SDDM is a modern display manager for X11 and Wayland aiming to be fast, simple and beautiful.
 It uses modern technologies like QtQuick, which in turn gives the designer the ability to
 create smooth, animated user interfaces.
@@ -16,23 +20,6 @@ a combox etc.
 
 There are a few sample themes distributed with SDDM.
 They can be used as a starting point for new themes.
-
-## SCREENSHOTS
-
-![sample screenshot](https://raw.github.com/sddm/sddm/master/data/themes/maui/maui.jpg)
-
-## VIDEOS
-
-* [Video background](https://www.youtube.com/watch?v=kKwz2FQcE3c)
-* [Maui theme 1](https://www.youtube.com/watch?v=-0d1wkcU9DU)
-* [Maui theme 2](https://www.youtube.com/watch?v=dJ28mrOeuNA)
-
-## RESOURCES
-
-* [Issue tracker](https://github.com/sddm/sddm/issues)
-* [Wiki](https://github.com/sddm/sddm/wiki)
-* [Mailing List](https://groups.google.com/group/sddm-devel)
-* IRC channel `#sddm` on [chat.freenode.net](https://webchat.freenode.net?channels=sddm)
 
 ## INSTALLATION
 
